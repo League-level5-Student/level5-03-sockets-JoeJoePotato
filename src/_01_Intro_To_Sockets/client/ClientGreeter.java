@@ -8,7 +8,7 @@ public class ClientGreeter {
    public static void main(String [] args) {
 	  //1. Create a String for the ip address of the server. 
 	  // If you don't know how to find a computer's ip address, ask about ifconfig on linux/mac and ipconfig on windows.
-	String ip="104.6.138.4";
+	String ip="localhost";
       //2. Create an integer for the server's port number
      int prt=8080;
       //3. Surround steps 4-9 in a try-catch block that catches any IOExceptions.
@@ -27,10 +27,12 @@ public class ClientGreeter {
         System.out.println(inn.readUTF());
          //9. Close the client's server object
         s.close();
+        
  
 	
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
+		System.out.println(":(");
 		e.printStackTrace();
 	}
 	        
