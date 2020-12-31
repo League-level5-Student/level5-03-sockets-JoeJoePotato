@@ -20,7 +20,7 @@ public class ChatServer {
 	ObjectOutputStream os;
 	ObjectInputStream is;
 
-	public Server(int port) {
+	public ChatServer(int port) {
 		this.port = port;
 	}
 
