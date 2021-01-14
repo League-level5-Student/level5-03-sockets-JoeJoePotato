@@ -15,7 +15,12 @@ import _03_Chat_Application_networking.ChatServer;
  */
 
 public class ChatApp extends JFrame {
-JButton button = new JButton("CLICK");
+ /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+JButton button= new JButton("Send a message");
 	
 	ChatServer server;
 	ChatClient client;
@@ -26,13 +31,13 @@ JButton button = new JButton("CLICK");
 	
 	public ChatApp(){
 		
-		int response = JOptionPane.showConfirmDialog(null, "Would you like to host a connection?", "Just chatting.", JOptionPane.YES_NO_OPTION);
+		int response = JOptionPane.showConfirmDialog(null, "Would you like to host a connection?");
 		if(response == JOptionPane.YES_OPTION){
-			server = new ChatServer(8080);
+			server = new ChatServer(80);
 			setTitle("SERVER");
 			JOptionPane.showMessageDialog(null, "Server started at: " + server.getIPAddress() + "\nPort: " + server.getPort());
 			button.addActionListener((e)->{
-				server.sendClick();
+				server.sendMessage();
 			});
 			add(button);
 			setVisible(true);
@@ -43,11 +48,9 @@ JButton button = new JButton("CLICK");
 		}else{
 			setTitle("CLIENT");
 			String ipStr = JOptionPane.showInputDialog("Enter the IP Address");
-			String prtStr = JOptionPane.showInputDialog("Enter the port number");
-			int port = Integer.parseInt(prtStr);
-			client = new ChatClient(ipStr, port);
+			client = new ChatClient(ipStr, 80);
 			button.addActionListener((e)->{
-				client.sendClick();
+				client.sendMessage();
 			});
 			add(button);
 			setVisible(true);

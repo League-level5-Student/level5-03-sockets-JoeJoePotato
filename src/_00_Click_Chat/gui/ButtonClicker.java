@@ -8,6 +8,11 @@ import _00_Click_Chat.networking.Client;
 import _00_Click_Chat.networking.Server;
 
 public class ButtonClicker extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	JButton button = new JButton("CLICK");
 	
 	Server server;

@@ -1,5 +1,6 @@
 package _03_Chat_Application_networking;
 
+import java.awt.HeadlessException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -21,38 +22,39 @@ public class ChatClient {
 		this.port = port;
 	}
 
-	public void start(){
+	public void start() {
 		try {
 
 			connection = new Socket(ip, port);
 
 			os = new ObjectOutputStream(connection.getOutputStream());
+			System.out.println("os");
 			is = new ObjectInputStream(connection.getInputStream());
+			System.out.println("is");
 
 			os.flush();
-
-			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("is it working?");	
 		while (connection.isConnected()) {
-			try {
-				JOptionPane.showMessageDialog(null, is.readObject());
-				System.out.println(is.readObject());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+					try {
+						System.out.println("yup");
+						JOptionPane.showMessageDialog(null, is.readObject());
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}	
 			}
-		}
+
 	}
-	
-	public void sendClick() {
+
+	public void sendMessage() {
 		try {
 			if (os != null) {
-				os.writeObject("MESSAGE SENT FROM CLIENT");
-				os.flush();
+			os.writeObject("MESSAGE SENT FROM CLIENT");
+			os.flush();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
